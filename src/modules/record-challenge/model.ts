@@ -4,12 +4,11 @@ import {
   Model,
   Unique,
   AutoIncrement,
-  PrimaryKey, HasMany
+  PrimaryKey
 } from 'sequelize-typescript';
-import { UserFavoriteHero } from '../userFavoriteHero/model';
 
-@Table({ tableName: 'Hero' })
-export class Hero extends Model<Hero> {
+@Table({ tableName: 'RecordChallenge' })
+export class RecordChallenge extends Model<RecordChallenge> {
   @PrimaryKey
   @AutoIncrement
   @Column({ field: 'id' })
@@ -27,12 +26,4 @@ export class Hero extends Model<Hero> {
 
   @Column({ field: 'deleted_at' })
   deletedAt: Date;
-
-  @HasMany(() => UserFavoriteHero, {
-    onUpdate: 'CASCADE',
-    onDelete: 'CASCADE',
-    hooks:    true
-  })
-  favHero: UserFavoriteHero[];
-  
 }
