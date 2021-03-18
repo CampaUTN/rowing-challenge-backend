@@ -1,11 +1,11 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
-import { Challenge } from './model';
 import { getErrorMessage } from '../core/errorMessage';
+import { Challenge } from "./model";
 
 @Injectable()
 export class ChallengeService {
   
-  findAll() {
+  getAll() {
     return Challenge.findAll();
   }
 
@@ -14,28 +14,30 @@ export class ChallengeService {
     return challenge.destroy();
   }
   
-  async save(challenge: Challenge) {
+  async save(hero: Challenge) {
     try {
-      return Challenge.create(challenge);
+      const challengeSave = await Challenge.create(hero);
+      return challengeSave;
     } catch (err) {
       throw new HttpException({
         status:   HttpStatus.INTERNAL_SERVER_ERROR,
-        message:  getErrorMessage(err.message, '. Error creando Challenge')
+        message:  getErrorMessage(err.message, 'Already exist')
       }, HttpStatus.INTERNAL_SERVER_ERROR);
     }
   }
 
-  findOne(id: number) {
+  getHero(id: number) {
     return Challenge.findByPk(id);
   }
 
-  async update(challenge: Challenge) {
+  async update(hero: Challenge) {
     try {
-      return Challenge.upsert(challenge);
+      const challengeSave = await Challenge.upsert(hero);
+      return challengeSave;
     } catch (err) {
       throw new HttpException({
         status:   HttpStatus.INTERNAL_SERVER_ERROR,
-        message:  getErrorMessage(err.message,  '. Error actualizando Challenge')
+        message:  getErrorMessage(err.message,  'Already exist')
       }, HttpStatus.INTERNAL_SERVER_ERROR);
     }
    

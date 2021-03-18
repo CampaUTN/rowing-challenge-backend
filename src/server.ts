@@ -4,9 +4,8 @@ import { paths, server, database } from './config';
 import * as Umzug from 'umzug';
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-import { Hero } from './modules/hero/model';
+import { Challenge } from './modules/hero/model';
 import { User } from './modules/user/model';
-import { UserFavoriteHero } from './modules/userFavoriteHero/model';
 
 export class ServerSetup {
   private http!: HttpServer;
@@ -41,7 +40,7 @@ export class ServerSetup {
       username: database.username,
       password: database.password,
       sync:     { force: database.sync.force },
-      models:   [Hero, User, UserFavoriteHero] // List of sequelize models
+      models:   [Challenge, User] // List of sequelize models
     });
 
     this.umzug = new Umzug({
