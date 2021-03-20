@@ -25,6 +25,15 @@ export class ChallengeService {
     }
   }
 
+  async findLast() {
+    const challenges = await Challenge.findAll();
+    if (challenges.length) {
+      return challenges[challenges.length - 1];
+    } else {
+      throw new Error('Error getting today');
+    }
+  }
+
   findOne(id: number) {
     return Challenge.findByPk(id);
   }

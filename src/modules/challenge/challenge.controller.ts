@@ -1,9 +1,9 @@
 import { Controller, Post, Body, Get, Delete, Param, Put, UseGuards } from '@nestjs/common';
-import { JwtAuthGuard } from '../auth/jwt-auth.guard';
+// import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 import { ChallengeService } from './challenge.service';
 import { Challenge } from './model';
 
-@UseGuards(JwtAuthGuard)
+// @UseGuards(JwtAuthGuard)
 @Controller('api/challenge')
 export class ChallengeController {
   constructor(private challengeService: ChallengeService) {}
@@ -11,6 +11,11 @@ export class ChallengeController {
   @Get()
   find() {
     return this.challengeService.findAll();
+  }
+
+  @Get('today-challenge')
+  getToday() {
+    return this.challengeService.findLast()
   }
 
   @Get(':id')

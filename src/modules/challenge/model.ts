@@ -2,7 +2,6 @@ import {
   Table,
   Column,
   Model,
-  Unique,
   AutoIncrement,
   PrimaryKey
 } from 'sequelize-typescript';
@@ -14,9 +13,14 @@ export class Challenge extends Model<Challenge> {
   @Column({ field: 'id' })
   id: number;  
 
-  @Unique
-  @Column({ field: 'name' })
-  name: string;
+  @Column({ field: 'title' })
+  title: string;
+
+  @Column({ field: 'description' })
+  description: string;
+
+  @Column({ field: 'date' })
+  date: string;
 
   @Column({ field: 'created_at' })
   createdAt: Date;

@@ -1,0 +1,15 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "build-backend",
+        "type": "npm",
+        "script": "build",
+        "path": ".",
+        "group": "build",
+        "problemMatcher": [],
+        "detail": "yarn run tsc"
+      }
+    ]
+  }
+  
