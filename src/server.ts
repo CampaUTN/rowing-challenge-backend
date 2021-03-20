@@ -4,9 +4,11 @@ import { paths, server, database } from './config';
 import * as Umzug from 'umzug';
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-import { Hero } from './modules/hero/model';
 import { User } from './modules/user/model';
-import { UserFavoriteHero } from './modules/userFavoriteHero/model';
+import { Challenge } from './modules/challenge/model';
+import { Training } from './modules/training/model';
+import { RecordChallenge } from './modules/record-challenge/model';
+import { RecordTraining } from './modules/record-training/model';
 
 export class ServerSetup {
   private http!: HttpServer;
@@ -41,7 +43,7 @@ export class ServerSetup {
       username: database.username,
       password: database.password,
       sync:     { force: database.sync.force },
-      models:   [Hero, User, UserFavoriteHero] // List of sequelize models
+      models:   [User, Challenge, Training, RecordChallenge, RecordTraining] // List of sequelize models
     });
 
     this.umzug = new Umzug({

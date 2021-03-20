@@ -1,12 +1,11 @@
 import {
-  Table,
   Column,
   Model,
+  Table,
   Unique,
   AutoIncrement,
   PrimaryKey, HasMany
 } from 'sequelize-typescript';
-import { UserFavoriteHero } from '../userFavoriteHero/model';
 
 @Table({ tableName: 'User' })
 export class User extends Model<User> {
@@ -37,15 +36,4 @@ export class User extends Model<User> {
   
     @Column({ field: 'deleted_at' })
     deletedAt: Date;
-
-    @HasMany(() => UserFavoriteHero, {
-      onUpdate: 'CASCADE',
-      onDelete: 'CASCADE',
-      hooks:    true
-    })
-    favHero: UserFavoriteHero[];
-
-    getFullName() {
-      return `${this.name} ${this.lastName}`;
-    }
 }

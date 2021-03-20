@@ -10,7 +10,7 @@ module.exports = {
       },
       challengeId: {
         field:  'challenge_id',
-        type:   Sequelize.NUMBER,
+        type:   Sequelize.INTEGER,
         references: {
           model: 'Challenge', 
           key: 'id'
@@ -18,7 +18,7 @@ module.exports = {
       },
       userId: {
         field:  'user_id',
-        type:   Sequelize.NUMBER,
+        type:   Sequelize.INTEGER,
         references: {
           model: 'User', 
           key: 'id'

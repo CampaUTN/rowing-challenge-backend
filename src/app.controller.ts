@@ -1,4 +1,4 @@
-import { Controller } from './modules/challenge/node_modules/@nestjs/common';
+import { Controller } from "@nestjs/common";
 
 @Controller('api')
 export class AppController {
