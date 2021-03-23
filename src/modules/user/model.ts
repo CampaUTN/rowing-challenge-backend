@@ -20,6 +20,9 @@ export class User extends Model<User> {
 
     @Column({ field: 'lastName' })
     lastName: string;
+    
+    @Column({ field: 'birthday' })
+    birthday: Date;
 
     @Unique
     @Column({ field: 'email' })

@@ -9,6 +9,7 @@ module.exports = {
       },
       name:         Sequelize.DataTypes.STRING,
       lastName:     Sequelize.DataTypes.STRING,
+      birthday:     Sequelize.DataTypes.DATE,
       email:        { 
         field:      'email',
         type:       Sequelize.DataTypes.STRING,
